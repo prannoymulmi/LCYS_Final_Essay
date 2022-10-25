@@ -28,7 +28,7 @@ The trust levels define the privileges and grants an external entity/actors rece
  \hline
  1 & Anonymous Web User/Patient & A user who can schedule an appointment with a specialist without providing valid credentials. However, Personal Identifiable Information is provided during scheduling. \\
  \hline
- 2 & Specialist with Valid Login Credentials & A special user who is a doctor/specialist in the clinic. When logged in using valid credentials, he/she can manage, create, modify, and view scheduling information connected to their own profile. \\
+ 2 & Specialist with Valid Login Credentials & A special user who is a doctor/specialist in the clinic. When logged in using valid credentials, he/she can manage, create, modify, and view scheduling information connected to their profile. \\
  \hline
  3 & Receptionist with Valid Login Credentials & A special user who is a receptionist in the clinic. When logged in using valid credentials, he/she can manage, create, modify, and view the scheduling information of all patients. \\
  \hline
@@ -113,12 +113,28 @@ The possible dangers and the reliability of the ASMIS system are divided into th
  (2) Anomaly Detection using ML \newline
  (3) Define strong and quick remedies in case of an attack
  \citep[p.~1]{DDOS}\\
- \hline
- Social Engineering & High & Moderate & (1) Continuously inform users and staff about such techniques.\\
- \hline
-  Malware & Moderate & High & (1) Install up-to-date antivirus.\newline
+\hline
+   Malware & Moderate & High & (1) Install up-to-date antivirus.\newline
+  (2) Use of threat monitoring tools, i.e., Security information and event management (SIEM) tools.\newline
+  (3) Recurring Training - how to avoid malware  
   \\
  \hline
+ Social Engineering & High & Moderate & (1) Security training and awareness for all users\newline
+ (2) Incident Response \citep[p.~ 13-17]{chantler2008social}
+  \\
+  \hline
+   Database Theft & Moderate & High & (1) Encrypt database at rest\newline
+ (2) Database User credentials must be stored in a safe place
+  \\
+  \hline 
+     Data corruption by staff & Low & High & (1) Work with least privileges\newline
+ (2) Backup data in secure and isolated storage.
+  \\
+  \hline
+       Poor password & High & High & (1) Strong password requirements\newline
+       (2) Use MFA in complement with a password.
+  \\
+  \hline
  \caption{Abuse Case Risk and Mitigation Analysis}
     \label{table:abuse_case}
 \end{longtable}
