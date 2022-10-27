@@ -1,28 +1,16 @@
 \chapter{Threat Modeling}
 Threat modeling is gaining more importance in application development, also known as the Secure Software Development Lifecycle (SSDLC) \citep{snyk_2022}. In the development cycle, one can use threat modeling approaches to identify and analyze different security issues in the application. Many other processes exist to carry out threat modeling, each of which has advantages and disadvantages. However, in this report, the Abuse Case Modelling and the STRIDE method will be used to analyze and recommend appropriate mitigations for the dangers using the recommended process from OWASP \citep{owasp_threat_model_process}.
 
-\section{Threat Model Information}
-\textbf{Application Name}: Appointment and Scheduling Management Information System
-\textbf{Application Version}: 1.0 \newline
-\textbf{Description}: Queens medical center is a community clinic that needs to replace its call-based appointment system with an online web application. Following the use cases (see. figure \ref{fig:usecase}), the application will have four actors/users.
-\begin{itemize}
-  \item Patients
-  \item Receptionist
-  \item Specialists/Doctors
-  \item Admins
-\end{itemize}
 
-\newpage
 
 \section{Trust Levels}
 The trust levels define the privileges and grants an external entity/actors receive to use the application. The trust levels defined for the ASMIS system for the Queens medical center are defined in Table \ref{table:trust_levels}
 
 \begingroup
-\begin{table}[h!]
 \centering
 \setlength{\tabcolsep}{6.5pt} % Default value: 6pt
 \renewcommand{\arraystretch}{1.8} % Default value: 1
-\begin{tabular}{ |p{1cm}|p{6cm}|p{8cm}|}
+\begin{longtable}{ |p{1cm}|p{6cm}|p{8cm}|}
  \hline
  \textbf{ID} & \textbf{Name} & \textbf{Description} \\ [0.5ex] 
  \hline
@@ -36,10 +24,9 @@ The trust levels define the privileges and grants an external entity/actors rece
  \hline
  5 & Database Read/Write User & A database account is used to read and write the contents of the database.  \\ [1ex]
  \hline
-\end{tabular}
 \caption{Trust Levels ASMIS system.}
 \label{table:trust_levels}
-\end{table}
+\end{longtable}
 \endgroup
 
 \section{Entry Points}
