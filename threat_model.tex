@@ -1,8 +1,9 @@
 \chapter{Threat Modeling}
+\label{chap:threat_modeling}
 Threat modeling is gaining more importance in application development, also known as the Secure Software Development Lifecycle (SSDLC) \citep{snyk_2022}. In the development cycle, one can use threat modeling approaches to identify and analyze different security issues in the application. Many other processes exist to carry out threat modeling, each of which has advantages and disadvantages. However, in this report, the Abuse Case Modelling and the STRIDE method will be used to analyze and recommend appropriate mitigations for the dangers using the recommended process from OWASP \citep{owasp_threat_model_process}.
 
 
-
+\begin{comment}
 \section{Trust Levels}
 The trust levels define the privileges and grants an external entity/actors receive to use the application. The trust levels defined for the ASMIS system for the Queens medical center are defined in Table \ref{table:trust_levels}
 
@@ -28,11 +29,15 @@ The trust levels define the privileges and grants an external entity/actors rece
 \label{table:trust_levels}
 \end{longtable}
 \endgroup
+\end{comment}
 
+\begin{comment}
 \section{Entry Points}
 The entry points are the available access points through which users and potential hackers interact with the application. The definition of access points in the threat model aids us in determining from which points the attack vectors are carried out to hinder the application's functionality.\newline
 
-\begingroup
+%Uncomment if want the old thing back
+\begin{comment}
+    \begingroup
 \centering
 \setlength{\tabcolsep}{6.5pt} % Default value: 6pt
 \renewcommand{\arraystretch}{1.8} % Default value: 1
@@ -71,6 +76,49 @@ The entry points are the available access points through which users and potenti
     \label{table:entry_points}
 \end{longtable}
 \endgroup
+\end{comment}
+
+\begin{comment}
+\begingroup
+\centering
+\setlength{\tabcolsep}{6.5pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1.8} % Default value: 1
+\begin{longtable}{ |p{3cm}|p{3cm}|p{5cm}| p{3cm} |}
+ \hline
+ \textbf{ID} & \textbf{Name} & \textbf{Description} & \textbf{Trust Levels} \\ [0.5ex] 
+ \hline
+ \multirow{2}{5em}{1} & Appointment Scheduling Main Page & The main page for all users of the application & (1) \\
+ \hline
+ \multirow{2}{5em}{2} & Appointment Scheduling Patient Page & The first point of contact for the patient to seek an appointment for their health issues. & (1) \\
+ \hline
+ 3 & Login Page & The specialists, receptionists, and admins must log in before carrying out their respective functions & 
+ (1) \newline
+ (2)\newline
+ (3)\newline
+ (4)
+ \\
+ \hline
+ 4 & Appointment Management Page & The page can manage and modify all the information for appointments for a specific specialist & 
+ (1) \newline
+ (2)\newline
+ (3)\newline
+ (4)\\
+ \hline
+  5 & Search All Patient Pages & The page can manage and view all the information for patients who scheduled an appointment. & 
+ (1) \newline
+ (2)\newline
+ (3)\newline
+ (4)
+ \\
+ \hline
+ 6 & Admin Page & The page used by the admins to add new users and assign them with needed permissions & 
+ (1)\newline \\
+ \hline
+ \caption{Entry Points ASMIS system.}
+    \label{table:entry_points}
+\end{longtable}
+\endgroup
+\end{comment}
 
 \section{Abuse Case Model}
 
@@ -80,7 +128,8 @@ The entry points are the available access points through which users and potenti
 \caption{Abuse case diagram for ASMIS}\label{fig:abuse_case}
 \end{figure}
 
-Using the Entry points (See Table \ref{table:entry_points}) and the use cases (See Figure\ref{fig:usecase}) the following possible abuse/misuse cases have been derived.
+Using %the Entry points (See Table \ref{table:entry_points}) and 
+the use cases (See Figure\ref{fig:usecase}) the following possible abuse/misuse cases have been derived.
 The possible dangers and the reliability of the ASMIS system are divided into three distinct actors: the external attacker, the staff/internal threat, and the patient/user. Table \ref{table:abuse_case} elaborates the risk factors with the recommended mitigation for the given abuse cases.
 
 \begingroup
@@ -126,4 +175,5 @@ The possible dangers and the reliability of the ASMIS system are divided into th
     \label{table:abuse_case}
 \end{longtable}
 \endgroup
+
 

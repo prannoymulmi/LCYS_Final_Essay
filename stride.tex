@@ -13,74 +13,136 @@
 \end{figure}
 
 \subsection{Overview}
-STRIDE is one of the most mature threat analysis modeling methods. Microsoft has adopted this method since 2002, where STRIDE stands for a mnemonic, Spoofing, Tampering, Repudiation, Information disclosure, Denial of Service, and Elevation of privilege. It is also easier to discover and brainstorm possible threats using these points. Its simplicity and ability to find threats using dataflow diagrams made it a promising candidate for this report.\newline\newline
-Figures \ref{fig:dfd_staff} and \ref{fig:dfd_user} depict the Level 0 dataflow diagram in respect to the different actors and how the system acts between the trusted boundaries. Additionally, from the DFD, we can identify the events and boundaries of the ASMIS system that would provide a concrete platform to perform STRIDE modeling \citep[p.~1]{shevchenko2018threat}.
+STRIDE is one of the most mature threat analysis modeling methods. Microsoft has adopted this method since 2002, where STRIDE stands for, Spoofing, Tampering, Repudiation, Information disclosure, Denial of Service, and Elevation of privilege. It is also easier to discover and brainstorm possible threats using these points. Its simplicity and ability to find threats using dataflow diagrams made it a promising candidate for this report.\newline\newline
+Figures \ref{fig:dfd_staff} and \ref{fig:dfd_user} depicts the Level 0 dataflow diagram concerning the different actors and how the system acts between the trusted boundaries. Additionally, from the DFD, we can identify the events and boundaries of the ASMIS system that would provide a concrete platform to perform STRIDE modeling \citep[p.~1]{shevchenko2018threat}.
 
 \subsection{Spoofing}
-\begin{enumerate}    
-  \item Take over Staff account 
-  \item DNS spoofing to redirect users to a fake site
-  \item Ip spoofing
-  \item Attacker can pose as an unauthenticated user to make appointments unavailable.
-  \item Replay attacks
-  \item Man-in-the-middle-attack
-\end{enumerate}
-\subsubsection{Mitigations}
-\begin{enumerate}
-    \item Having strict Multifactor authentication rules for the staff. Using only app-based or hardware key-based MFA solutions.
-    \item Keeping the validity of the access tokens short-lived.
-    \item Use only one-time usable refresh tokens and blacklist all tokens if the refresh token is used more than once.
-    \item Use encrypted protocols, i.e, HTTPS everywhere to communicate.
-    \item Use DNSSec to prevent cache poisoning.
-\end{enumerate}
+\begingroup
+\centering
+\setlength{\tabcolsep}{6.5pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1.8} % Default value: 1
+\begin{longtable}{ |p{7cm}| p{8cm} |}
+\hline
+\textbf{Threat} & \textbf{Mitigations}\\
+\hline
+Staff account is compromised & Having strict MFA rules for the staff. Using only app-based or hardware key-based MFA solutions. \\
+\hline
+DNS spoofing to redirect users to a fake site & Use DNSSec to prevent cache poisoning. \\
+\hline
+Ip spoofing & Network monitoring, and a firewall should be utilized.\\
+\hline
+An attacker can pose as an unauthenticated user to make appointments unavailable & Use robust authentication techniques, like MFA (SMS), to verify users before confirming the appointments.\\
+\hline
+Replay attacks & Use only one-time usable refresh tokens and blacklist all tokens if the refresh token is used more than once.\\
+\hline
+Man-in-the-middle-attack & Use encrypted protocols, i.e., HTTPS/SSL, TLS, everywhere to communicate.\newline
+Keeping the validity of the access tokens short-lived. \\
+\hline
+\end{longtable}
+\endgroup
 
 \subsection{Tampering}
-\begin{enumerate}    
-  \item Tampering roles in a token of an authorized user
-  \item Modify mobile app or browser app code.
-   \item Redirect data flow to an attacker's machine.
-   \item Cross-Site Request Forgery.
-   \item Modify a patient's appointments without authority.
-\end{enumerate}
-\subsubsection{Mitigations}
-\begin{enumerate}
-    \item Digital signatures using a safely stored private key on the tokens should be carried out.
-    \item Using checksums to test the recognized codes.
-    \item Sending OTP to patient's verified phone, before being able to modify appointments.
-    \item Using CSRF token to verify, if the 
-\end{enumerate}
+
+\begingroup
+\centering
+\setlength{\tabcolsep}{6.5pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1.8} % Default value: 1
+\begin{longtable}{ |p{7cm}| p{8cm} |}
+\hline
+\textbf{Threat} & \textbf{Mitigations}
+\hline
+Tampering roles in a token of an authorized user & Digital signatures using a safely stored private key on the tokens should be carried out.\\
+\hline
+Injection of malicious code in application code. & Using checksums to test the recognized codes.\\
+\hline
+Cross-Site Request Forgery & Using CSRF token to verify the request.\\
+\hline
+Modify a patient's appointments without authority & Sending OTP to patient's verified phone before being able to modify appointments.\\
+\hline
+\end{longtable}
+\endgroup
 
 \subsection{Redupation}
-\begin{enumerate}    
-  \item Claims to be some other user/staff
-  \item Modify mobile app or browser app code
-  \item User claims not to have set up or canceled an appointment.
-\end{enumerate}
-
-\subsubsection{Mitigations}
-\begin{enumerate}
-    \item 
-\end{enumerate}
+\begingroup
+\centering
+\setlength{\tabcolsep}{6.5pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1.8} % Default value: 1
+\begin{longtable}{ |p{7cm}| p{8cm} |}
+\hline
+\textbf{Threat} & \textbf{Mitigations}
+\hline
+Claims to be some other user/staff & Audit the changes by the users.\\
+\hline
+A user claims not to have set up or canceled an appointment. & Use timestamps for services and APIs used.\\
+\hline
+\end{longtable}
+\endgroup
 
 \subsection{Information Disclousre}
-\begin{enumerate}
-    \item Vital system errors in error logs
-    \item SQL injection to get data from the database
-    \item private keys stored securely in local storage of browser/mobile
-    \item Get information for analyzing the traffic
-    \item Benefiting from loose ACL
-\end{enumerate}
+
+\begingroup
+\centering
+\setlength{\tabcolsep}{6.5pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1.8} % Default value: 1
+\begin{longtable}{ |p{7cm}| p{8cm} |}
+\hline
+\textbf{Threat} & \textbf{Mitigations}\\
+\hline
+SQL injection to get data from the database & Use proven frameworks which has safe functions for databases.\\
+\hline
+Sensible keys are retrieved from the application. & Store secret keys in a Keystore separate from the application.\\
+\hline
+Weak database password &  Regularly rotate keys, i.e., 90 days. \newline
+Use IAM short-lived roles instead of long-lived keys to access databases. \\
+\hline
+Get valuable information from network analysis & Use a firewall or redirect malicious requests to a honeypot \citep{manageengine}.\\
+\hline
+Sensible data is exposed & Encrypt sensible data uses strong algorithms like argon2 and bcrypt. \citep{owasp_secure_encrypt}\\
+\hline
+\end{longtable}
+\endgroup
+
 
 \subsection{Denial of Service}
-\begin{enumerate}
-    \item Attempt too many logins for staff
-    \item Use bots to carry out Syn flood attacks on the application.
-    \item Bots pose as users and book all available appointments.
-\end{enumerate}
+\begingroup
+\centering
+\setlength{\tabcolsep}{6.5pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1.8} % Default value: 1
+\begin{longtable}{ |p{7cm}| p{8cm} |}
+\hline
+\textbf{Threat} & \textbf{Mitigations} \\
+\hline
+Attempt too many logins for staff & Only allow patients to book appointments with verifying, i.e., Use of phone numbers verification. \newline
+Restrict the number of appointments a patient can make within a certain period.\\
+\hline
+Use bots to carry out Syn flood attacks on the application & Use a CDN to offload the servers.\newline 
+Use a WAF or DDoS protection tool like Cloudflare in front of the services.\newline
+Monitor/alerting for network logs.\newline
+Use ML tools that scan and block blacklisted IPs.
+\\
+\hline
+\end{longtable}
+\endgroup
+
 
 \subsection{Elevation of Privilege}
-\begin{enumerate}
-    \item Admin Privileges to all the staff
-    \item Other users allowed to add roles to itself
-    \item A super user for the application, which could access all the resources.
-\end{enumerate}
+
+\begingroup
+\centering
+\setlength{\tabcolsep}{6.5pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1.8} % Default value: 1
+\begin{longtable}{ |p{7cm}| p{8cm} |}
+\hline
+\textbf{Threat} & \textbf{Mitigations} \\
+\hline
+Admin Privileges to all the staff & Use least privilege principal and give permissions needed only.
+\\
+\hline
+A super user for the application, which could access all the resources. & Use least privilege principal.\\
+\hline
+Unauthorized roles are added to a user & Use strict MFA methods to verify change of roles
+\hline
+\end{longtable}
+\endgroup
+
+
