@@ -137,42 +137,43 @@ The possible dangers and the reliability of the ASMIS system are divided into th
 \setlength{\tabcolsep}{6.5pt} % Default value: 6pt
 \renewcommand{\arraystretch}{1.8} % Default value: 1
 \begin{longtable}{ |p{3cm}|p{3cm}|p{3cm}| p{5cm} |}
+ \caption{Abuse Case Risk and Mitigation Analysis}
+    \label{table:abuse_case}
  \hline
  \textbf{Threat} & \textbf{Likelihood} & \textbf{Impact} & \textbf{Mitigations} \\ [0.5ex] 
  \hline
- Brute Force Attack & High & Moderate & (1) Block User for a while after X failed log in attempts\newline
- (2) Use fraud detection \newline
- (3) Use strong passwords
+ Brute Force Attack & High & Moderate &  Block User for a while after X failed log in attempts.\newline
+ Use fraud detection. \newline
+ Use strong passwords.
  \citep[p.~682-683]{herley2008protecting}\\
  \hline
- DDoS Attack & High & High & (1) Traffic flow Monitoring\newline
- (2) Anomaly Detection using ML \newline
- (3) Define strong and quick remedies in case of an attack
+ DDoS Attack & High & High & Traffic flow Monitoring\newline
+  Anomaly Detection using ML. \newline
+  Define strong and quick remedies in case of an attack.
  \citep[p.~1]{DDOS}\\
 \hline
-   Malware & Moderate & High & (1) Install up-to-date antivirus.\newline
-  (2) Use of threat monitoring tools, i.e., Security information and event management (SIEM) tools.\newline
-  (3) Recurring Training - how to avoid malware  
+   Malware & Moderate & High & Install up-to-date antivirus.\newline
+   Use of threat monitoring tools, i.e., Security information and event management (SIEM) tools.\newline
+ Recurring Training - how to avoid malware  
   \\
  \hline
- Social Engineering & High & Moderate & (1) Security training and awareness for all users\newline
- (2) Incident Response \citep[p.~ 13-17]{chantler2008social}
+ Social Engineering & High & Moderate & Security training and awareness for all users.\newline
+ Incident Response \citep[p.~ 13-17]{chantler2008social}
   \\
   \hline
-   Database Theft & Moderate & High & (1) Encrypt database at rest\newline
- (2) Database User credentials must be stored in a safe place
+   Database Theft & Moderate & High & Encrypt database at rest.\newline
+  Database User credentials must be stored in a safe place.
   \\
   \hline 
-     Data corruption by staff & Low & High & (1) Work with least privileges\newline
- (2) Backup data in secure and isolated storage.
+     Data corruption by staff & Low & High & Work with least privileges.\newline
+  Backup data in secure and isolated storage.
   \\
   \hline
-       Poor password & High & High & (1) Strong password requirements\newline
-       (2) Use MFA in complement with a password.
+       Poor password & High & High &Strong password requirements.\newline
+       Use MFA in complement with a password.
   \\
   \hline
- \caption{Abuse Case Risk and Mitigation Analysis}
-    \label{table:abuse_case}
+
 \end{longtable}
 \endgroup
 

@@ -1,8 +1,11 @@
 \section{STRIDE Modeling}
+\subsection{Overview}
+STRIDE is one of the most mature threat analysis modeling methods. Microsoft has adopted this method since 2002, where STRIDE stands for, Spoofing, Tampering, Repudiation, Information disclosure, Denial of Service, and Elevation of privilege. Its simplicity and ability to find threats using dataflow diagrams made it a promising candidate for this report.\newline\newline
+Figures \ref{fig:dfd_staff} and \ref{fig:dfd_user} depict a Level 0 dataflow diagram concerning different actors and how the system acts between trusted boundaries. Additionally, from the DFD, we can identify events and boundaries of the ASMIS system that would provide a concrete platform to perform STRIDE modeling \citep[p.~1]{shevchenko2018threat}.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=\textwidth]{pics/dfd_staff.png}
+\includegraphics[width=16cm, height=11cm]{pics/dfd_staff.png}
 \caption{DFD level 0 Staff for ASMIS}\label{fig:dfd_staff}
 \end{figure}
 
@@ -12,9 +15,6 @@
 \caption{DFD level 0 User for ASMIS}\label{fig:dfd_user}
 \end{figure}
 
-\subsection{Overview}
-STRIDE is one of the most mature threat analysis modeling methods. Microsoft has adopted this method since 2002, where STRIDE stands for, Spoofing, Tampering, Repudiation, Information disclosure, Denial of Service, and Elevation of privilege. It is also easier to discover and brainstorm possible threats using these points. Its simplicity and ability to find threats using dataflow diagrams made it a promising candidate for this report.\newline\newline
-Figures \ref{fig:dfd_staff} and \ref{fig:dfd_user} depicts the Level 0 dataflow diagram concerning the different actors and how the system acts between the trusted boundaries. Additionally, from the DFD, we can identify the events and boundaries of the ASMIS system that would provide a concrete platform to perform STRIDE modeling \citep[p.~1]{shevchenko2018threat}.
 
 \subsection{Spoofing}
 \begingroup
@@ -22,10 +22,13 @@ Figures \ref{fig:dfd_staff} and \ref{fig:dfd_user} depicts the Level 0 dataflow 
 \setlength{\tabcolsep}{6.5pt} % Default value: 6pt
 \renewcommand{\arraystretch}{1.8} % Default value: 1
 \begin{longtable}{ |p{7cm}| p{8cm} |}
+\caption{Spoofing Mitigations and threats}
+    \label{table:spoofing}
 \hline
-\textbf{Threat} & \textbf{Mitigations}\\
+\textbf{Threats} & \textbf{Mitigations}\\
 \hline
-Staff account is compromised & Having strict MFA rules for the staff. Using only app-based or hardware key-based MFA solutions. \\
+Staff account is compromised & Having strict MFA rules for the staff.\newline 
+Using only app-based or hardware key-based MFA solutions. \\
 \hline
 DNS spoofing to redirect users to a fake site & Use DNSSec to prevent cache poisoning. \\
 \hline
@@ -48,8 +51,10 @@ Keeping the validity of the access tokens short-lived. \\
 \setlength{\tabcolsep}{6.5pt} % Default value: 6pt
 \renewcommand{\arraystretch}{1.8} % Default value: 1
 \begin{longtable}{ |p{7cm}| p{8cm} |}
+\caption{Tampering Mitigations and threats}
+    \label{table:tamp}
 \hline
-\textbf{Threat} & \textbf{Mitigations}
+\textbf{Threats} & \textbf{Mitigations} \\
 \hline
 Tampering roles in a token of an authorized user & Digital signatures using a safely stored private key on the tokens should be carried out.\\
 \hline
@@ -62,21 +67,7 @@ Modify a patient's appointments without authority & Sending OTP to patient's ver
 \end{longtable}
 \endgroup
 
-\subsection{Redupation}
-\begingroup
-\centering
-\setlength{\tabcolsep}{6.5pt} % Default value: 6pt
-\renewcommand{\arraystretch}{1.8} % Default value: 1
-\begin{longtable}{ |p{7cm}| p{8cm} |}
-\hline
-\textbf{Threat} & \textbf{Mitigations}
-\hline
-Claims to be some other user/staff & Audit the changes by the users.\\
-\hline
-A user claims not to have set up or canceled an appointment. & Use timestamps for services and APIs used.\\
-\hline
-\end{longtable}
-\endgroup
+
 
 \subsection{Information Disclousre}
 
@@ -85,8 +76,10 @@ A user claims not to have set up or canceled an appointment. & Use timestamps fo
 \setlength{\tabcolsep}{6.5pt} % Default value: 6pt
 \renewcommand{\arraystretch}{1.8} % Default value: 1
 \begin{longtable}{ |p{7cm}| p{8cm} |}
+\caption{Information Disclosure Mitigations and threats}
+    \label{table:info_dis}
 \hline
-\textbf{Threat} & \textbf{Mitigations}\\
+\textbf{Threats} & \textbf{Mitigations}\\
 \hline
 SQL injection to get data from the database & Use proven frameworks which has safe functions for databases.\\
 \hline
@@ -102,6 +95,24 @@ Sensible data is exposed & Encrypt sensible data uses strong algorithms like arg
 \end{longtable}
 \endgroup
 
+\subsection{Redupation}
+\begingroup
+\centering
+\setlength{\tabcolsep}{6.5pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1.8} % Default value: 1
+\begin{longtable}{ |p{7cm}| p{8cm} |}
+\caption{Redupation Mitigations and threats}
+    \label{table:redupation}
+\hline
+\textbf{Threats} & \textbf{Mitigations}\\
+\hline
+Claims to be some other user/staff & Audit the changes by the users.\\
+\hline
+A user claims to have yet to set up or cancel an appointment. & Use timestamps for services and APIs used.\\
+\hline
+\end{longtable}
+\endgroup
+
 
 \subsection{Denial of Service}
 \begingroup
@@ -109,8 +120,10 @@ Sensible data is exposed & Encrypt sensible data uses strong algorithms like arg
 \setlength{\tabcolsep}{6.5pt} % Default value: 6pt
 \renewcommand{\arraystretch}{1.8} % Default value: 1
 \begin{longtable}{ |p{7cm}| p{8cm} |}
+\caption{DoS Mitigations and threats}
+    \label{table:dos}
 \hline
-\textbf{Threat} & \textbf{Mitigations} \\
+\textbf{Threats} & \textbf{Mitigations} \\
 \hline
 Attempt too many logins for staff & Only allow patients to book appointments with verifying, i.e., Use of phone numbers verification. \newline
 Restrict the number of appointments a patient can make within a certain period.\\
@@ -132,15 +145,17 @@ Use ML tools that scan and block blacklisted IPs.
 \setlength{\tabcolsep}{6.5pt} % Default value: 6pt
 \renewcommand{\arraystretch}{1.8} % Default value: 1
 \begin{longtable}{ |p{7cm}| p{8cm} |}
+\caption{Elevation of Privileges Mitigations and threats}
+    \label{table:eop}
 \hline
-\textbf{Threat} & \textbf{Mitigations} \\
+\textbf{Threats} & \textbf{Mitigations} \\
 \hline
 Admin Privileges to all the staff & Use least privilege principal and give permissions needed only.
 \\
 \hline
-A super user for the application, which could access all the resources. & Use least privilege principal.\\
+A super user for the application, which could access all the resources. & Use least privilege principle.\\
 \hline
-Unauthorized roles are added to a user & Use strict MFA methods to verify change of roles
+Unauthorized roles are added to a user & Use rigorous MFA methods to verify a change of roles.
 \hline
 \end{longtable}
 \endgroup
