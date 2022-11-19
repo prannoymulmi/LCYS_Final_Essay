@@ -1,6 +1,6 @@
 \section{STRIDE Modeling}
 \subsection{Overview}
-STRIDE is one of the most mature threat analysis modeling methods. Microsoft has adopted this method since 2002, where STRIDE stands for, Spoofing, Tampering, Repudiation, Information disclosure, Denial of Service, and Elevation of privilege. Its simplicity and ability to find threats using dataflow diagrams made it a promising candidate for this report.\newline\newline
+STRIDE is one of the most mature threat analysis modeling methods. Microsoft has adopted this method since 2002, where STRIDE stands for, Spoofing, Tampering, Repudiation, Information disclosure, Denial of Service, and Elevation of privilege \citep[p.~1]{shevchenko2018threat}. Its simplicity and ability to find threats using dataflow diagrams made it a promising candidate for this report.\newline\newline
 Figures \ref{fig:dfd_staff} and \ref{fig:dfd_user} depict a Level 0 dataflow diagram concerning different actors and how the system acts between trusted boundaries. Additionally, from the DFD, we can identify events and boundaries of the ASMIS system that would provide a concrete platform to perform STRIDE modeling \citep[p.~1]{shevchenko2018threat}.
 
 \begin{figure}[h!]
@@ -90,7 +90,7 @@ Use IAM short-lived roles instead of long-lived keys to access databases. \\
 \hline
 Get valuable information from network analysis & Use a firewall or redirect malicious requests to a honeypot \citep{manageengine}.\\
 \hline
-Sensible data is exposed & Encrypt sensible data uses strong algorithms like argon2 and bcrypt. \citep{owasp_secure_encrypt}\\
+Sensible data is exposed & Hash sensible passwords using strong algorithms like argon2 and bcrypt. \citep{owasp_secure_encrypt}\\
 \hline
 \end{longtable}
 \endgroup
